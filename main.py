@@ -5,12 +5,11 @@
 :Version: 1.0.0
 :Date: 14/05/2026
 '''
-import sys
 from pathlib import Path
 
 
 from core.config import read_config
-from core.sql import init_db, destory_db
+from core.sql import init_db
 
 ROOT_DIR = Path(__file__).parent
 
