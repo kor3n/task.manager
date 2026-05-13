@@ -1,0 +1,6 @@
+# Basic ignores
+__pycache__
+.venv
+
+# Project specific
+*.db
