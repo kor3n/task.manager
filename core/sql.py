@@ -52,8 +52,8 @@ def init_db(data_base_name: Path) -> bool:
     if data_base_name.exists():
         return False
     with SQLDatabase(data_base_name) as db:
-        db.execute('CREATE TABLE Archive (name TEXT, age INTERGER)')
-        db.execute('CREATE TABLE TODO (name TEXT, age INTERGER)')
+        db.execute('CREATE TABLE IF NOT EXISTS Archive (name TEXT, age INTERGER)')
+        db.execute('CREATE TABLE IF NOT EXISTS TODO (name TEXT, age INTERGER)')
     return True
 
 
@@ -70,4 +70,4 @@ def destory_db(data_base_name: Path) -> bool:
 
 if __name__ == '__main__':
     print(init_db(Path('test.db')))
-    print(destory_db(Path('test.db')))
+    # print(destory_db(Path('test.db')))

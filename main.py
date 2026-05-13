@@ -1,26 +1,20 @@
-'''Title
-
-<description>
+'''Task.Manager [main]
 
 :Authors:
-    Joshua Boat,
+    Kor3n,
 :Version: 1.0.0
-:Date: 01/01/2025
+:Date: 14/05/2026
 '''
-import sys
 from pathlib import Path
 
-import typer
 
 from core.config import read_config
-from core.sql import init_db, destory_db
+from core.sql import init_db
 
 ROOT_DIR = Path(__file__).parent
-app = typer.Typer()
 
 
-@app.command('initi')
-def init() -> None:
+def main() -> None:
     '''main
 
     This is the main function that calls any other functions to complete its task.
@@ -29,11 +23,8 @@ def init() -> None:
     loaded_config = read_config(ROOT_DIR.joinpath('config.json'))
     database_location = ROOT_DIR.joinpath(loaded_config['database'])
 
-    if init_db(database_location) is False:
-        sys.exit('DB Exsists!')
-    if destory_db(database_location) is False:
-        sys.exit(1)
+    init_db(database_location)
 
 
 if __name__ == '__main__':
-    app()
+    main()
